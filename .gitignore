@@ -1,3 +1,7 @@
+# Hide that key list
+# Users should rename keys.template.plist into their own
+*/keys.plist
+
 # Hide those DS_store files!
 */.DS_Store
 

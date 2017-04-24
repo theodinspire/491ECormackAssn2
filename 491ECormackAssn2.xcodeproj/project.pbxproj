@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		67932D24260EC99FEE26B8DF /* Pods_491ECormackAssn2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9AD0E09BECFA14608A2C3B /* Pods_491ECormackAssn2Tests.framework */; };
 		6B44B8EA591419E23269DB69 /* Pods_491ECormackAssn2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3E8C3C99FCA04FE21FFC9 /* Pods_491ECormackAssn2.framework */; };
+		A0CBF4551EAEB22E00CECA23 /* keys.template.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0CBF4541EAEB22E00CECA23 /* keys.template.plist */; };
 		A0F2FCD61EAE76BE002F74F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FCD51EAE76BE002F74F3 /* AppDelegate.swift */; };
 		A0F2FCD81EAE76BE002F74F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FCD71EAE76BE002F74F3 /* ViewController.swift */; };
 		A0F2FCDB1EAE76BE002F74F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F2FCD91EAE76BE002F74F3 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		2B9AD0E09BECFA14608A2C3B /* Pods_491ECormackAssn2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_491ECormackAssn2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE3E8C3C99FCA04FE21FFC9 /* Pods_491ECormackAssn2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_491ECormackAssn2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		706B40133BEE6595FAA88132 /* Pods-491ECormackAssn2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-491ECormackAssn2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-491ECormackAssn2Tests/Pods-491ECormackAssn2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		A0CBF4541EAEB22E00CECA23 /* keys.template.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.template.plist; sourceTree = "<group>"; };
 		A0F2FCD21EAE76BE002F74F3 /* 491ECormackAssn2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 491ECormackAssn2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F2FCD51EAE76BE002F74F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F2FCD71EAE76BE002F74F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				A0F2FCDC1EAE76BE002F74F3 /* Assets.xcassets */,
 				A0F2FCDE1EAE76BE002F74F3 /* LaunchScreen.storyboard */,
 				A0F2FCE11EAE76BE002F74F3 /* Info.plist */,
+				A0CBF4541EAEB22E00CECA23 /* keys.template.plist */,
 			);
 			path = 491ECormackAssn2;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				A0F2FCE01EAE76BE002F74F3 /* LaunchScreen.storyboard in Resources */,
 				A0F2FCDD1EAE76BE002F74F3 /* Assets.xcassets in Resources */,
 				A0F2FCDB1EAE76BE002F74F3 /* Main.storyboard in Resources */,
+				A0CBF4551EAEB22E00CECA23 /* keys.template.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +553,7 @@
 				A0F2FCF11EAE76BE002F74F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A0F2FCF21EAE76BE002F74F3 /* Build configuration list for PBXNativeTarget "491ECormackAssn2Tests" */ = {
 			isa = XCConfigurationList;
@@ -557,6 +562,7 @@
 				A0F2FCF41EAE76BE002F74F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
