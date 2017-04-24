@@ -1,0 +1,6 @@
+framework module Pods_491ECormackAssn2 {
+  umbrella header "Pods-491ECormackAssn2-umbrella.h"
+
+  export *
+  module * { export * }
+}
