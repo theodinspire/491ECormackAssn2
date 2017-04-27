@@ -805,6 +805,7 @@ extension JSON {
         }
         set {
             self.object = newValue?.absoluteString
+                as Any // Edited line, comment this line if needed
         }
     }
 }
