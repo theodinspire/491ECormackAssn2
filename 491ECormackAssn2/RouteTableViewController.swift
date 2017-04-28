@@ -44,30 +44,17 @@ class RouteTableViewController: UITableViewController {
             return tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let target = segue.destination as? DirectionViewController, let cell = sender as? RouteTableViewCell {
+            DispatchQueue(label: "queue", qos: .userInteractive).async {
+                target.route = cell.route
+            }
+        }
+    }
 
     func loadData() {
-        let dataTask = CTAConnector.dataTask(forCall: "getroutes") { optdata, response, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                //  TODO: do some better error handling
-                return
-            }
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-                if let httpResponse = response as? HTTPURLResponse {
-                    print(HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
-                } else {
-                    print("Response is not hyper-text transfer protocol")
-                }
-                
-                print("A correct response would have HTTP Status code of 200")
-                return
-            }
-            
-            guard let data = optdata else {
-                print("Data malformed")
-                return
-            }
-            
+        CTAConnector.makeRequest(forCall: "getroutes") { data in
             let json = JSON(data: data)
             
             guard let rts = json["bustime-response"]["routes"].array else {
@@ -89,8 +76,6 @@ class RouteTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-        
-        dataTask?.resume()
     }
 }
 

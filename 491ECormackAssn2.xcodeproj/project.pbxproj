@@ -11,7 +11,12 @@
 		6B44B8EA591419E23269DB69 /* Pods_491ECormackAssn2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3E8C3C99FCA04FE21FFC9 /* Pods_491ECormackAssn2.framework */; };
 		A000DBBE1EAFDBB2007231CA /* CTAConnectorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000DBBD1EAFDBB2007231CA /* CTAConnectorTest.swift */; };
 		A01D00341EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D00331EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift */; };
+		A06630BA1EB256AE000F66E6 /* StopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06630B91EB256AE000F66E6 /* StopTableViewController.swift */; };
+		A06630BC1EB256F3000F66E6 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06630BB1EB256F3000F66E6 /* BusStop.swift */; };
 		A07A846A1EAED38A00B7B053 /* CTAConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A84691EAED38A00B7B053 /* CTAConnector.swift */; };
+		A09E0F501EB2DDE9000B300B /* DirectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */; };
+		A0B74F5A1EB2866B00116D7F /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F591EB2866B00116D7F /* DirectionViewController.swift */; };
+		A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F5B1EB286CB00116D7F /* Direction.swift */; };
 		A0CBF4571EAEB30E00CECA23 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0CBF4561EAEB30E00CECA23 /* keys.plist */; };
 		A0CBF45A1EAEB43800CECA23 /* KeyRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBF4591EAEB43800CECA23 /* KeyRing.swift */; };
 		A0CBF45C1EAEB67C00CECA23 /* KeyRingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBF45B1EAEB67C00CECA23 /* KeyRingTest.swift */; };
@@ -44,7 +49,12 @@
 		706B40133BEE6595FAA88132 /* Pods-491ECormackAssn2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-491ECormackAssn2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-491ECormackAssn2Tests/Pods-491ECormackAssn2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A000DBBD1EAFDBB2007231CA /* CTAConnectorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTAConnectorTest.swift; sourceTree = "<group>"; };
 		A01D00331EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewControllerTest.swift; sourceTree = "<group>"; };
+		A06630B91EB256AE000F66E6 /* StopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopTableViewController.swift; sourceTree = "<group>"; };
+		A06630BB1EB256F3000F66E6 /* BusStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		A07A84691EAED38A00B7B053 /* CTAConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTAConnector.swift; sourceTree = "<group>"; };
+		A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewControllerTest.swift; sourceTree = "<group>"; };
+		A0B74F591EB2866B00116D7F /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
+		A0B74F5B1EB286CB00116D7F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		A0CBF4561EAEB30E00CECA23 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		A0CBF4591EAEB43800CECA23 /* KeyRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyRing.swift; sourceTree = "<group>"; };
 		A0CBF45B1EAEB67C00CECA23 /* KeyRingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyRingTest.swift; sourceTree = "<group>"; };
@@ -138,6 +148,8 @@
 			children = (
 				A0F2FCD51EAE76BE002F74F3 /* AppDelegate.swift */,
 				A0F2FCD71EAE76BE002F74F3 /* RouteTableViewController.swift */,
+				A0B74F591EB2866B00116D7F /* DirectionViewController.swift */,
+				A06630B91EB256AE000F66E6 /* StopTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -155,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A0EBA39D1EB18A90000D9D6A /* UIColor.swift */,
+				A0B74F5B1EB286CB00116D7F /* Direction.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -179,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				A01D00331EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift */,
+				A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -242,6 +256,7 @@
 			children = (
 				A0CBF4581EAEB40700CECA23 /* Singletons */,
 				A0EBA3971EB12379000D9D6A /* Route.swift */,
+				A06630BB1EB256F3000F66E6 /* BusStop.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -454,6 +469,10 @@
 				A0F2FCD81EAE76BE002F74F3 /* RouteTableViewController.swift in Sources */,
 				A0F2FCD61EAE76BE002F74F3 /* AppDelegate.swift in Sources */,
 				A0EBA3A51EB1A043000D9D6A /* RouteTableViewCell.swift in Sources */,
+				A06630BA1EB256AE000F66E6 /* StopTableViewController.swift in Sources */,
+				A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */,
+				A0B74F5A1EB2866B00116D7F /* DirectionViewController.swift in Sources */,
+				A06630BC1EB256F3000F66E6 /* BusStop.swift in Sources */,
 				A0EBA3981EB12379000D9D6A /* Route.swift in Sources */,
 				A0CBF45A1EAEB43800CECA23 /* KeyRing.swift in Sources */,
 			);
@@ -463,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A09E0F501EB2DDE9000B300B /* DirectionViewControllerTest.swift in Sources */,
 				A0CBF45C1EAEB67C00CECA23 /* KeyRingTest.swift in Sources */,
 				A0EBA3A01EB18B8F000D9D6A /* UIColorTest.swift in Sources */,
 				A0EBA39B1EB1896A000D9D6A /* RouteTest.swift in Sources */,
