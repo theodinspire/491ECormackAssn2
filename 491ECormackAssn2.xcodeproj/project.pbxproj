@@ -10,6 +10,9 @@
 		67932D24260EC99FEE26B8DF /* Pods_491ECormackAssn2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9AD0E09BECFA14608A2C3B /* Pods_491ECormackAssn2Tests.framework */; };
 		6B44B8EA591419E23269DB69 /* Pods_491ECormackAssn2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3E8C3C99FCA04FE21FFC9 /* Pods_491ECormackAssn2.framework */; };
 		A000DBBE1EAFDBB2007231CA /* CTAConnectorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000DBBD1EAFDBB2007231CA /* CTAConnectorTest.swift */; };
+		A004501A1EB3890D000DD0ED /* StopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00450191EB3890D000DD0ED /* StopTableViewCell.swift */; };
+		A004501C1EB3892B000DD0ED /* StopTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A004501B1EB3892B000DD0ED /* StopTableViewControllerTest.swift */; };
+		A004501E1EB3A531000DD0ED /* BusStopTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A004501D1EB3A531000DD0ED /* BusStopTest.swift */; };
 		A01D00341EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D00331EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift */; };
 		A06630BA1EB256AE000F66E6 /* StopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06630B91EB256AE000F66E6 /* StopTableViewController.swift */; };
 		A06630BC1EB256F3000F66E6 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06630BB1EB256F3000F66E6 /* BusStop.swift */; };
@@ -30,6 +33,11 @@
 		A0F2FCDB1EAE76BE002F74F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F2FCD91EAE76BE002F74F3 /* Main.storyboard */; };
 		A0F2FCDD1EAE76BE002F74F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F2FCDC1EAE76BE002F74F3 /* Assets.xcassets */; };
 		A0F2FCE01EAE76BE002F74F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F2FCDE1EAE76BE002F74F3 /* LaunchScreen.storyboard */; };
+		A0F664AC1EB529DF007BC4D1 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F664AB1EB529DF007BC4D1 /* TimeViewController.swift */; };
+		A0F664AE1EB52BDE007BC4D1 /* Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F664AD1EB52BDE007BC4D1 /* Warning.swift */; };
+		A0F664B01EB52D61007BC4D1 /* WaitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F664AF1EB52D61007BC4D1 /* WaitTableViewCell.swift */; };
+		A0F664B21EB531FA007BC4D1 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F664B11EB531FA007BC4D1 /* Prediction.swift */; };
+		A0F664B61EB555A7007BC4D1 /* WarningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F664B51EB555A7007BC4D1 /* WarningTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +56,9 @@
 		4DE3E8C3C99FCA04FE21FFC9 /* Pods_491ECormackAssn2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_491ECormackAssn2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		706B40133BEE6595FAA88132 /* Pods-491ECormackAssn2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-491ECormackAssn2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-491ECormackAssn2Tests/Pods-491ECormackAssn2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A000DBBD1EAFDBB2007231CA /* CTAConnectorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTAConnectorTest.swift; sourceTree = "<group>"; };
+		A00450191EB3890D000DD0ED /* StopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopTableViewCell.swift; sourceTree = "<group>"; };
+		A004501B1EB3892B000DD0ED /* StopTableViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopTableViewControllerTest.swift; sourceTree = "<group>"; };
+		A004501D1EB3A531000DD0ED /* BusStopTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusStopTest.swift; sourceTree = "<group>"; };
 		A01D00331EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewControllerTest.swift; sourceTree = "<group>"; };
 		A06630B91EB256AE000F66E6 /* StopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopTableViewController.swift; sourceTree = "<group>"; };
 		A06630BB1EB256F3000F66E6 /* BusStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
@@ -72,6 +83,11 @@
 		A0F2FCE11EAE76BE002F74F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F2FCE61EAE76BE002F74F3 /* 491ECormackAssn2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 491ECormackAssn2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F2FCEC1EAE76BE002F74F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0F664AB1EB529DF007BC4D1 /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		A0F664AD1EB52BDE007BC4D1 /* Warning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warning.swift; sourceTree = "<group>"; };
+		A0F664AF1EB52D61007BC4D1 /* WaitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitTableViewCell.swift; sourceTree = "<group>"; };
+		A0F664B11EB531FA007BC4D1 /* Prediction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
+		A0F664B51EB555A7007BC4D1 /* WarningTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningTableViewCell.swift; sourceTree = "<group>"; };
 		D464E29E542A09E5C33DE64A /* Pods-491ECormackAssn2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-491ECormackAssn2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-491ECormackAssn2Tests/Pods-491ECormackAssn2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2C5527029AE0ECAF286531 /* Pods-491ECormackAssn2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-491ECormackAssn2.release.xcconfig"; path = "Pods/Target Support Files/Pods-491ECormackAssn2/Pods-491ECormackAssn2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +146,7 @@
 			children = (
 				A0EBA3941EB0F30B000D9D6A /* Singletons */,
 				A0EBA39A1EB1896A000D9D6A /* RouteTest.swift */,
+				A004501D1EB3A531000DD0ED /* BusStopTest.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -150,6 +167,7 @@
 				A0F2FCD71EAE76BE002F74F3 /* RouteTableViewController.swift */,
 				A0B74F591EB2866B00116D7F /* DirectionViewController.swift */,
 				A06630B91EB256AE000F66E6 /* StopTableViewController.swift */,
+				A0F664AB1EB529DF007BC4D1 /* TimeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -167,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				A0EBA39D1EB18A90000D9D6A /* UIColor.swift */,
-				A0B74F5B1EB286CB00116D7F /* Direction.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -184,6 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				A0EBA3A41EB1A043000D9D6A /* RouteTableViewCell.swift */,
+				A00450191EB3890D000DD0ED /* StopTableViewCell.swift */,
+				A0F664AF1EB52D61007BC4D1 /* WaitTableViewCell.swift */,
+				A0F664B51EB555A7007BC4D1 /* WarningTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -193,6 +213,7 @@
 			children = (
 				A01D00331EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift */,
 				A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */,
+				A004501B1EB3892B000DD0ED /* StopTableViewControllerTest.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -256,7 +277,10 @@
 			children = (
 				A0CBF4581EAEB40700CECA23 /* Singletons */,
 				A0EBA3971EB12379000D9D6A /* Route.swift */,
+				A0B74F5B1EB286CB00116D7F /* Direction.swift */,
 				A06630BB1EB256F3000F66E6 /* BusStop.swift */,
+				A0F664AD1EB52BDE007BC4D1 /* Warning.swift */,
+				A0F664B11EB531FA007BC4D1 /* Prediction.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -465,14 +489,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				A07A846A1EAED38A00B7B053 /* CTAConnector.swift in Sources */,
+				A0F664B61EB555A7007BC4D1 /* WarningTableViewCell.swift in Sources */,
 				A0EBA39E1EB18A90000D9D6A /* UIColor.swift in Sources */,
 				A0F2FCD81EAE76BE002F74F3 /* RouteTableViewController.swift in Sources */,
 				A0F2FCD61EAE76BE002F74F3 /* AppDelegate.swift in Sources */,
 				A0EBA3A51EB1A043000D9D6A /* RouteTableViewCell.swift in Sources */,
 				A06630BA1EB256AE000F66E6 /* StopTableViewController.swift in Sources */,
 				A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */,
+				A004501A1EB3890D000DD0ED /* StopTableViewCell.swift in Sources */,
+				A0F664AE1EB52BDE007BC4D1 /* Warning.swift in Sources */,
 				A0B74F5A1EB2866B00116D7F /* DirectionViewController.swift in Sources */,
+				A0F664B01EB52D61007BC4D1 /* WaitTableViewCell.swift in Sources */,
 				A06630BC1EB256F3000F66E6 /* BusStop.swift in Sources */,
+				A0F664B21EB531FA007BC4D1 /* Prediction.swift in Sources */,
+				A0F664AC1EB529DF007BC4D1 /* TimeViewController.swift in Sources */,
 				A0EBA3981EB12379000D9D6A /* Route.swift in Sources */,
 				A0CBF45A1EAEB43800CECA23 /* KeyRing.swift in Sources */,
 			);
@@ -483,8 +513,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A09E0F501EB2DDE9000B300B /* DirectionViewControllerTest.swift in Sources */,
+				A004501C1EB3892B000DD0ED /* StopTableViewControllerTest.swift in Sources */,
 				A0CBF45C1EAEB67C00CECA23 /* KeyRingTest.swift in Sources */,
 				A0EBA3A01EB18B8F000D9D6A /* UIColorTest.swift in Sources */,
+				A004501E1EB3A531000DD0ED /* BusStopTest.swift in Sources */,
 				A0EBA39B1EB1896A000D9D6A /* RouteTest.swift in Sources */,
 				A000DBBE1EAFDBB2007231CA /* CTAConnectorTest.swift in Sources */,
 				A01D00341EB1C4AE0030F2F4 /* RouteTableViewControllerTest.swift in Sources */,

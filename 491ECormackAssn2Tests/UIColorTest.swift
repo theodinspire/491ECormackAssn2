@@ -50,5 +50,4 @@ class UIColorTest: XCTestCase {
         
         XCTAssertNil(sut)
     }
-    
 }

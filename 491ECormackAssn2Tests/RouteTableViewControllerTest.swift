@@ -44,6 +44,7 @@ class RouteTableViewControllerTest: XCTestCase {
         
         sut.prepare(for: segue, sender: pressedCell)
         
-        XCTAssertTrue(sut.routes[indexOfRoute] === destination.route)
+        XCTAssertNotNil(destination.route)
+        XCTAssertEqual(sut.routes[indexOfRoute], destination.route!)
     }
 }

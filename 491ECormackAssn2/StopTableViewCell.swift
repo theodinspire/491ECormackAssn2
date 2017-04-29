@@ -1,24 +1,20 @@
 //
-//  RouteTableViewCell.swift
+//  StopTableViewCell.swift
 //  491ECormackAssn2
 //
-//  Created by Eric Cormack on 4/26/17.
+//  Created by Eric Cormack on 4/28/17.
 //  Copyright © 2017 the Odin Spire. All rights reserved.
 //
 
 import UIKit
 
-class RouteTableViewCell: UITableViewCell {
-    @IBOutlet weak var colorBar: UIView!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var routeLabel: UILabel!
+class StopTableViewCell: UITableViewCell {
+    @IBOutlet weak var label: UILabel!
     
-    var route = Route(name: "Loading", number: "") {
+    var stop = BusStop(ID: "Loading…", name: "") {
         didSet {
             DispatchQueue.main.async {
-                self.colorBar.backgroundColor = self.route.color
-                self.numberLabel.text = self.route.number
-                self.routeLabel.text = self.route.name
+                self.label.text = self.stop.name
             }
         }
     }
@@ -33,4 +29,5 @@ class RouteTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }

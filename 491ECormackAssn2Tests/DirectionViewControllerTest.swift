@@ -32,7 +32,7 @@ class DirectionViewControllerTest: XCTestCase {
         sut.route = northsouth
         sleep(1)
         
-        XCTAssertEqual(sut.route.name, northsouth.name)
+        XCTAssertEqual(sut.route?.name, northsouth.name)
     }
     
     func testPrimaryDirectionSet_IsNorthOrSouthbound() {
@@ -51,4 +51,28 @@ class DirectionViewControllerTest: XCTestCase {
         XCTAssert(sut.primaryDirection == .Eastbound || sut.primaryDirection == .Westbound)
     }
     
+    func testSeque_RouteAndDirectionPassedToStopTableViewController() {
+        let direction = Direction.Northbound
+        sut.route = northsouth
+        sleep(1)
+        
+        let destination = StopTableViewController()
+        
+        let sender = { (dirVC: DirectionViewController) -> UIButton? in
+            for subview in dirVC.north.subviews {
+                if let button = subview as? UIButton { return button }
+                }
+            return nil
+        }(sut)
+        
+        XCTAssertNotNil(sender)
+        
+        let segue = UIStoryboardSegue(identifier: "NorthboundSegue", source: sut, destination: destination)
+        
+        sut.prepare(for: segue, sender: sender)
+        
+        XCTAssertEqual(destination.route?.name, sut.route?.name)
+        XCTAssertEqual(destination.route?.number, sut.route?.number)
+        XCTAssertEqual(destination.direction, direction)
+    }
 }

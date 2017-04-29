@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class StopTableViewController: UITableViewController {
     var dataLoaded = false
-    var route: Route!
     var stops = [BusStop]()
+
+    @IBOutlet weak var navbar: UINavigationItem!
+    
+    var route: Route? { didSet { setName(); loadData() } }
+    var direction: Direction? { didSet { setName(); loadData() } }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,10 @@ class StopTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,18 +46,18 @@ class StopTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dataLoaded ? stops.count : 15
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        if dataLoaded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StopCell", for: indexPath) as! StopTableViewCell
+            cell.stop = stops[indexPath.row]
+            return cell
+        } else {
+            return tableView.dequeueReusableCell(withIdentifier: "StopCell", for: indexPath)
+        }
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -85,14 +94,55 @@ class StopTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? TimeViewController, let cell = sender as? StopTableViewCell {
+            destination.stop = cell.stop
+            destination.targetRoute = route
+            destination.intendedDirection = direction
+        }
     }
-    */
+    
+    func setName() {
+        guard route != nil, direction != nil else { return }
+        //guard isViewLoaded else { return }
+        
+        DispatchQueue.main.async {
+            self.navigationItem.title = "\(self.route!.name) — \(self.direction!.rawValue)"
+        }
+    }
 
+    func loadData() {
+        guard route != nil, direction != nil else { return }
+        
+        CTAConnector.makeRequest(forCall: "getstops", withArguments: ["rt=\(route!.number)", "dir=\(direction!.rawValue)"]) { data in
+            let json = JSON(data: data)
+            
+            guard let stps = json["bustime-response"]["stops"].array else {
+                print("Stops data malformed")
+                print(json["bustime-response"]["stops"].error.debugDescription)
+                print(json)
+                return
+            }
+            
+            for stp in stps {
+                guard let ID = stp["stpid"].string else { break }
+                guard let name = stp["stpnm"].string else { break }
+                let lat = stp["lat"].doubleValue
+                let lon = stp["lon"].doubleValue
+                
+                self.stops.append(BusStop(ID: ID, name: name, lat: lat, lon: lon))
+            }
+            
+            self.dataLoaded = true
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 }

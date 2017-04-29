@@ -15,8 +15,9 @@ class DirectionViewController: UIViewController {
     @IBOutlet weak var south: UIView!
     @IBOutlet weak var west: UIView!
     
-    var route: Route! {
+    var route: Route? {
         didSet {
+            guard route != nil else { return }
             loadData()
         }
     }
@@ -48,7 +49,7 @@ class DirectionViewController: UIViewController {
     }
     
     func loadData() {
-        CTAConnector.makeRequest(forCall: "getdirections", withArguments: ["rt=\(route.number)"], failureTask: { DispatchQueue.main.async { self.navigationController?.popViewController(animated: true) } }) { data in
+        CTAConnector.makeRequest(forCall: "getdirections", withArguments: ["rt=\(route?.number ?? "")"], failureTask: { DispatchQueue.main.async { self.navigationController?.popViewController(animated: true) } }) { data in
             let json = JSON(data: data)
             
             if let str = json["bustime-response"]["directions"].array?[0]["dir"].string, let direction = Direction(rawValue: str) {
@@ -76,14 +77,17 @@ class DirectionViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? StopTableViewController, let buttonTitle = (sender as? UIButton)?.currentTitle {
+            destination.route = self.route
+            destination.direction = Direction(rawValue: buttonTitle)
+        }
     }
-    */
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Route {
+class Route: Equatable {
     let name: String
     let number: String
     lazy var color: UIColor = UIColor.lightGray
@@ -18,5 +18,9 @@ class Route {
         self.number = number
         
         if let code = colorCode, let clr = UIColor.fromHex(string: code) { color = clr }
+    }
+    
+    static func ==(this: Route, that: Route) -> Bool {
+        return this.number == that.number
     }
 }
