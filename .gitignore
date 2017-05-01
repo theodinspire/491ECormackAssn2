@@ -5,6 +5,9 @@
 # Hide those DS_store files!
 */.DS_Store
 
+# Hide PDF's
+*.pdf
+
 # Created by https://www.gitignore.io/api/xcode,swift
 
 ### Swift ###
