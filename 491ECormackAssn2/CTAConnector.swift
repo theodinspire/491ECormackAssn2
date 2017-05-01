@@ -29,8 +29,6 @@ class CTAConnector {
             return nil
         }
         
-        print(url)
-        
         let request = URLRequest(url: url)
         let session = URLSession.shared
         

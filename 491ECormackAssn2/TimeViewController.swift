@@ -27,14 +27,16 @@ class TimeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var predictions = [Prediction]()
     var warnings = [Warning]()
     
+    var timer: Timer?
+    
     var predictionDataLoaded = false {
         didSet {
-            if warningsDataLoaded { DispatchQueue.main.async { self.setData() } }
+            if warningsDataLoaded && predictionDataLoaded { DispatchQueue.main.async { self.setData() } }
         }
     }
     var warningsDataLoaded = false {
         didSet {
-            if predictionDataLoaded { DispatchQueue.main.async { self.setData() } }
+            if warningsDataLoaded && predictionDataLoaded { DispatchQueue.main.async { self.setData() } }
         }
     }
     
@@ -49,6 +51,13 @@ class TimeViewController: UIViewController, UITableViewDelegate, UITableViewData
         stopName.text = stop!.name
         loadData()
         super.viewWillAppear(animated)
+        
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(loadData), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,15 +135,36 @@ class TimeViewController: UIViewController, UITableViewDelegate, UITableViewData
     */
 
     func loadData() {
-        guard stop != nil else { return }
+        print("Updating stop info…")
+        guard stop != nil else {
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
+            return
+        }
+        
+        highAlert.removeAll(keepingCapacity: true)
+        predictions.removeAll(keepingCapacity: true)
+        warnings.removeAll(keepingCapacity: true)
         
         CTAConnector.makeRequest(forCall: "getpredictions", withArguments: ["stpid=\(stop!.ID)"]) { data in
             let json = JSON(data: data)
             
             guard let prds = json["bustime-response"]["prd"].array else {
+                if let errs = json["bustime-response"]["error"].array {
+                    for err in errs { if err["msg"] == "No service scheduled" {
+                        self.predictionDataLoaded = true
+                        return
+                        }
+                    }
+                }
+                
                 print("Prediction data malformed")
                 print(json["bustime-response"]["prd"].error.debugDescription)
                 print(json)
+                
+                self.predictionDataLoaded = true
+                
                 return
             }
             
@@ -156,9 +186,21 @@ class TimeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let json = JSON(data: data)
             
             guard let wrns = json["bustime-response"]["sb"].array else {
+                
+                if let errs = json["bustime-response"]["error"].array {
+                    for err in errs { if err["msg"] == "No data found for parameter" {
+                        self.warningsDataLoaded = true
+                        return
+                        }
+                    }
+                }
+                
                 print("Service Bulletin data malformed")
                 print(json["bustime-response"]["sb"].error.debugDescription)
                 print(json)
+                
+                self.warningsDataLoaded = true
+                
                 return
             }
             
@@ -193,6 +235,9 @@ class TimeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             stopWait.text = "--"
         }
+        
+        warningsDataLoaded = false
+        predictionDataLoaded = false
         
         table.reloadData()
     }

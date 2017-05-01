@@ -260,7 +260,7 @@
             </objects>
             <point key="canvasLocation" x="3218" y="92"/>
         </scene>
-        <!--Stop Wait-->
+        <!--Time View Controller-->
         <scene sceneID="9sR-tS-U7c">
             <objects>
                 <viewController id="75N-EB-NgP" customClass="TimeViewController" customModule="_91ECormackAssn2" customModuleProvider="target" sceneMemberID="viewController">
@@ -381,7 +381,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="⚠️ Warning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5h-e8-Qk6">
-                                                    <rect key="frame" x="16" y="4" width="91" height="20.5"/>
+                                                    <rect key="frame" x="16" y="4" width="311" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -405,6 +405,7 @@
                                                 <constraint firstItem="3Z5-fP-bil" firstAttribute="top" secondItem="7iI-xI-Bif" secondAttribute="top" constant="24" id="RJS-Mg-tBE"/>
                                                 <constraint firstAttribute="bottom" secondItem="3Z5-fP-bil" secondAttribute="bottom" constant="4.5" id="S4B-me-3TR"/>
                                                 <constraint firstAttribute="trailing" secondItem="3Z5-fP-bil" secondAttribute="trailing" constant="16" id="dg4-fv-Fgo"/>
+                                                <constraint firstAttribute="trailing" secondItem="V5h-e8-Qk6" secondAttribute="trailing" constant="16" id="qyk-WY-Yy9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -448,7 +449,7 @@
                             <constraint firstItem="Mon-yB-YsV" firstAttribute="top" secondItem="yUu-rJ-5eM" secondAttribute="bottom" constant="8" id="xFf-dr-nFd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stop Wait" id="C8N-d4-xeo"/>
+                    <navigationItem key="navigationItem" id="C8N-d4-xeo"/>
                     <connections>
                         <outlet property="destination" destination="Abf-Jk-yda" id="jP0-Gn-egY"/>
                         <outlet property="directionLabel" destination="aZW-ae-cz8" id="n91-p4-Zc5"/>
