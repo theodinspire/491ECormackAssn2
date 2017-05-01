@@ -1,6 +1,3 @@
-Eric T Cormack<br />
-CSC 491: iOS Development for Mobile Applications II<br />
-Assignment 2<br />
 30 April 2017
 
 ## Design
