@@ -36,7 +36,9 @@ class RouteManager {
             for rt in rts {
                 let colorCode = rt["rtclr"].string // Can be option
                 if let number = rt["rt"].string, let name = rt["rtnm"].string { // Must have value
-                    self.routes.append(Route(name: name, number: number, colorCode: colorCode))
+                    let route = Route(name: name, number: number, colorCode: colorCode)
+                    self.routes.append(route)
+                    StopManager.instance.add(route: route)
                 }
             }
             

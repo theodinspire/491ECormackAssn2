@@ -29,33 +29,40 @@ class StopManager {
         CTAConnector.makeRequest(forCall: "getdirections", withArguments: ["rt=\(route.number)"]) { data in
             let json = JSON(data: data)
             
-            if let str = json["bustime-response"]["directions"].array?[0]["dir"].string, let direction = Direction(rawValue: str) {
-                
-                for dir in [direction, direction.opposite] {
-                    //  TODO: Is this even gonna work?
-                    CTAConnector.makeRequest(forCall: "getstops", withArguments: ["rt=\(route.number)", "dir=\(dir.rawValue)"]) { data in
-                        let json = JSON(data: data)
-                        
-                        guard let stps = json["bustime-response"]["stops"].array else {
-                            print("Stops data malformed")
-                            print(json["bustime-response"]["stops"].error.debugDescription)
-                            print(json)
-                            return
-                        }
-                        
-                        var stops = [BusStop]()
-                        
-                        for stp in stps {
-                            guard let ID = stp["stpid"].string else { break }
-                            guard let name = stp["stpnm"].string else { break }
-                            let lat = stp["lat"].doubleValue
-                            let lon = stp["lon"].doubleValue
-                            
-                            stops.append(BusStop(ID: ID, name: name, lat: lat, lon: lon))
-                        }
-                        
-                        self.routeStops[route]?[dir] = stops
+            var directions = [Direction]()
+            
+            if let ary = json["bustime-response"]["directions"].array {
+                for item in ary {
+                    if let str = item["dir"].string, let direction = Direction(rawValue: str) {
+                        directions.append(direction)
                     }
+                }
+            }
+            
+            for direction in directions {
+                //  TODO: Is this even gonna work?
+                CTAConnector.makeRequest(forCall: "getstops", withArguments: ["rt=\(route.number)", "dir=\(direction.rawValue)"]) { data in
+                    let json = JSON(data: data)
+                    
+                    guard let stps = json["bustime-response"]["stops"].array else {
+                        print("Stops data malformed")
+                        print(json["bustime-response"]["stops"].error.debugDescription)
+                        print(json)
+                        return
+                    }
+                    
+                    var stops = [BusStop]()
+                    
+                    for stp in stps {
+                        guard let ID = stp["stpid"].string else { break }
+                        guard let name = stp["stpnm"].string else { break }
+                        let lat = stp["lat"].doubleValue
+                        let lon = stp["lon"].doubleValue
+                        
+                        stops.append(BusStop(ID: ID, name: name, lat: lat, lon: lon))
+                    }
+                    
+                    self.routeStops[route]?[direction] = stops
                 }
             }
         }

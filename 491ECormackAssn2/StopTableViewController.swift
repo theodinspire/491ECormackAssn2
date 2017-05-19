@@ -11,7 +11,11 @@ import SwiftyJSON
 
 class StopTableViewController: UITableViewController {
     var dataLoaded = false
-    var stops = [BusStop]()
+    var stops = [BusStop]() {
+        didSet {
+            DispatchQueue.main.async { self.tableView.reloadData() }
+        }
+    }
 
     @IBOutlet weak var navbar: UINavigationItem!
     
@@ -46,11 +50,11 @@ class StopTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataLoaded ? stops.count : 15
+        return stops.count > 0 ? stops.count : 15
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if dataLoaded {
+        if stops.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "StopCell", for: indexPath) as! StopTableViewCell
             cell.stop = stops[indexPath.row]
             return cell
@@ -118,31 +122,10 @@ class StopTableViewController: UITableViewController {
 
     func loadData() {
         guard route != nil, direction != nil else { return }
+        let stopManager = StopManager.instance
         
-        CTAConnector.makeRequest(forCall: "getstops", withArguments: ["rt=\(route!.number)", "dir=\(direction!.rawValue)"]) { data in
-            let json = JSON(data: data)
-            
-            guard let stps = json["bustime-response"]["stops"].array else {
-                print("Stops data malformed")
-                print(json["bustime-response"]["stops"].error.debugDescription)
-                print(json)
-                return
-            }
-            
-            for stp in stps {
-                guard let ID = stp["stpid"].string else { break }
-                guard let name = stp["stpnm"].string else { break }
-                let lat = stp["lat"].doubleValue
-                let lon = stp["lon"].doubleValue
-                
-                self.stops.append(BusStop(ID: ID, name: name, lat: lat, lon: lon))
-            }
-            
-            self.dataLoaded = true
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        stopManager.performTaskWhenLoaded(for: route!, going: direction!, on: DispatchQueue.global(qos: .userInitiated)) {
+            self.stops = (stopManager.routeStops[self.route!]?[self.direction!])!
         }
     }
 }

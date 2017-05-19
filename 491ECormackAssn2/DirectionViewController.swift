@@ -17,18 +17,20 @@ class DirectionViewController: UIViewController {
     
     var route: Route? {
         didSet {
-            guard route != nil else { return }
-            loadData()
-        }
-    }
-    
-    var primaryDirection = Direction.Northbound {
-        didSet {
-            switch primaryDirection {
-            case .Northbound, .Southbound:
-                hideEastWest()
-            case .Eastbound, .Westbound:
-                hideNorthSouth()
+            guard let rt = route else { return }
+            let stopManager = StopManager.instance
+            
+            stopManager.performTaskWhenLoaded(for: rt, going: nil, on: DispatchQueue.main) {
+                guard let keys = stopManager.routeStops[rt]?.keys else { return }
+                
+                for key in keys {
+                    switch key {
+                    case .Northbound: self.north.isHidden = false
+                    case .Eastbound: self.east.isHidden = false
+                    case .Southbound: self.south.isHidden = false
+                    case .Westbound: self.west.isHidden = false
+                    }
+                }
             }
         }
     }
@@ -46,16 +48,6 @@ class DirectionViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func loadData() {
-        CTAConnector.makeRequest(forCall: "getdirections", withArguments: ["rt=\(route?.number ?? "")"], failureTask: { DispatchQueue.main.async { self.navigationController?.popViewController(animated: true) } }) { data in
-            let json = JSON(data: data)
-            
-            if let str = json["bustime-response"]["directions"].array?[0]["dir"].string, let direction = Direction(rawValue: str) {
-                self.primaryDirection = direction
-            }
-        }
     }
     
     func hideNorthSouth() {
