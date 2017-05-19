@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Route: Equatable, Hashable {
+class Route: Equatable {
     let name: String
     let number: String
     lazy var color: UIColor = UIColor.lightGray
@@ -22,9 +22,5 @@ class Route: Equatable, Hashable {
     
     static func ==(this: Route, that: Route) -> Bool {
         return this.number == that.number
-    }
-    
-    var hashValue: Int {
-        return name.hashValue
     }
 }

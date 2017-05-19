@@ -10,15 +10,15 @@ import UIKit
 import SwiftyJSON
 
 class RouteTableViewController: UITableViewController {
-    let routeManager = RouteManager.instance
+    var dataLoaded = false
+    
+    var routes = [Route]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
-        routeManager.performWhenDataLoaded(in: DispatchQueue.main) {
-            self.tableView.reloadData()
-        }
+        
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,44 +27,21 @@ class RouteTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return routeManager.dataLoaded ? routeManager.routes.count : 15
-        default:
-            return 0
-        }
+        return dataLoaded ? routes.count : 15
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            return tableView.dequeueReusableCell(withIdentifier: "NearbyCell", for: indexPath)
-        case 1:
-            if routeManager.dataLoaded {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteTableViewCell
-                cell.route = routeManager.routes[indexPath.row]
-                
-                return cell
-            } else {
-                return tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath)
-            }
-        default:
-            return UITableViewCell()
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 1:
-            return "Routes"
-        default:
-            return nil
+        if dataLoaded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteTableViewCell
+            cell.route = routes[indexPath.row]
+            
+            return cell
+        } else {
+            return tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath)
         }
     }
     
@@ -72,6 +49,31 @@ class RouteTableViewController: UITableViewController {
         if let target = segue.destination as? DirectionViewController, let cell = sender as? RouteTableViewCell {
             DispatchQueue(label: "queue", qos: .userInteractive).async {
                 target.route = cell.route
+            }
+        }
+    }
+
+    func loadData() {
+        CTAConnector.makeRequest(forCall: "getroutes") { data in
+            let json = JSON(data: data)
+            
+            guard let rts = json["bustime-response"]["routes"].array else {
+                print("Routes data not correctly shaped as array")
+                print(json)
+                return
+            }
+            
+            for rt in rts {
+                let colorCode = rt["rtclr"].string // Can be option
+                if let number = rt["rt"].string, let name = rt["rtnm"].string { // Must have value
+                    self.routes.append(Route(name: name, number: number, colorCode: colorCode))
+                }
+            }
+            
+            self.dataLoaded = true
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
