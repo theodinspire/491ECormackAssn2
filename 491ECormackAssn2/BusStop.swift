@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BusStop: Equatable {
+class BusStop: Equatable, Hashable {
     let ID: String
     let name: String
     let latitude: Double
@@ -27,5 +27,9 @@ class BusStop: Equatable {
     
     static func ==(this: BusStop, that: BusStop) -> Bool {
         return this.ID == that.ID
+    }
+    
+    var hashValue: Int {
+        return ID.hashValue
     }
 }

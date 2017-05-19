@@ -20,6 +20,8 @@
 		A09E0F501EB2DDE9000B300B /* DirectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */; };
 		A0B74F5A1EB2866B00116D7F /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F591EB2866B00116D7F /* DirectionViewController.swift */; };
 		A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F5B1EB286CB00116D7F /* Direction.swift */; };
+		A0C8604C1ECE657C00BF7C5F /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C8604B1ECE657C00BF7C5F /* RouteManager.swift */; };
+		A0C8604E1ECE83A600BF7C5F /* StopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C8604D1ECE83A600BF7C5F /* StopManager.swift */; };
 		A0CBF4571EAEB30E00CECA23 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0CBF4561EAEB30E00CECA23 /* keys.plist */; };
 		A0CBF45A1EAEB43800CECA23 /* KeyRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBF4591EAEB43800CECA23 /* KeyRing.swift */; };
 		A0CBF45C1EAEB67C00CECA23 /* KeyRingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBF45B1EAEB67C00CECA23 /* KeyRingTest.swift */; };
@@ -66,6 +68,8 @@
 		A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewControllerTest.swift; sourceTree = "<group>"; };
 		A0B74F591EB2866B00116D7F /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		A0B74F5B1EB286CB00116D7F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		A0C8604B1ECE657C00BF7C5F /* RouteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
+		A0C8604D1ECE83A600BF7C5F /* StopManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopManager.swift; sourceTree = "<group>"; };
 		A0CBF4561EAEB30E00CECA23 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		A0CBF4591EAEB43800CECA23 /* KeyRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyRing.swift; sourceTree = "<group>"; };
 		A0CBF45B1EAEB67C00CECA23 /* KeyRingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyRingTest.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 			children = (
 				A0CBF4591EAEB43800CECA23 /* KeyRing.swift */,
 				A07A84691EAED38A00B7B053 /* CTAConnector.swift */,
+				A0C8604B1ECE657C00BF7C5F /* RouteManager.swift */,
+				A0C8604D1ECE83A600BF7C5F /* StopManager.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				TargetAttributes = {
 					A0F2FCD11EAE76BE002F74F3 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MQ79U7S5FQ;
 						ProvisioningStyle = Automatic;
 					};
 					A0F2FCE51EAE76BE002F74F3 = {
@@ -502,7 +509,9 @@
 				A0F664B01EB52D61007BC4D1 /* WaitTableViewCell.swift in Sources */,
 				A06630BC1EB256F3000F66E6 /* BusStop.swift in Sources */,
 				A0F664B21EB531FA007BC4D1 /* Prediction.swift in Sources */,
+				A0C8604E1ECE83A600BF7C5F /* StopManager.swift in Sources */,
 				A0F664AC1EB529DF007BC4D1 /* TimeViewController.swift in Sources */,
+				A0C8604C1ECE657C00BF7C5F /* RouteManager.swift in Sources */,
 				A0EBA3981EB12379000D9D6A /* Route.swift in Sources */,
 				A0CBF45A1EAEB43800CECA23 /* KeyRing.swift in Sources */,
 			);
@@ -651,6 +660,7 @@
 			baseConfigurationReference = 01A05CCD47DF17CE7D88E737 /* Pods-491ECormackAssn2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MQ79U7S5FQ;
 				INFOPLIST_FILE = 491ECormackAssn2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.theodinspire.-91ECormackAssn2";
@@ -664,6 +674,7 @@
 			baseConfigurationReference = DF2C5527029AE0ECAF286531 /* Pods-491ECormackAssn2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MQ79U7S5FQ;
 				INFOPLIST_FILE = 491ECormackAssn2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.theodinspire.-91ECormackAssn2";
