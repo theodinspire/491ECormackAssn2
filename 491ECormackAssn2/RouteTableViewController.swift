@@ -16,8 +16,10 @@ class RouteTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        routeManager.performWhenDataLoaded(in: DispatchQueue.main) {
-            self.tableView.reloadData()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.routeManager.performWhenDataLoaded(in: DispatchQueue.main) {
+                self.tableView.reloadData()
+            }
         }
     }
 
