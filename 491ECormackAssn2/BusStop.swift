@@ -13,13 +13,13 @@ class BusStop: Equatable, Hashable {
     let ID: String
     let name: String
     
-    let location: CLLocationCoordinate2D
+    let location: CLLocation
     
-    init(ID: String, name: String, lat: Double, lon: Double) {
+    init(ID: String, name: String, latitude: Double, longitude: Double) {
         self.ID = ID
         self.name = name
         
-        location = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(lon))
+        location = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
     }
     
     static func ==(this: BusStop, that: BusStop) -> Bool {

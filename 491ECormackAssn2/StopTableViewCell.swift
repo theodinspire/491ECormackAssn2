@@ -11,7 +11,7 @@ import UIKit
 class StopTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     
-    var stop = BusStop(ID: "Loading…", name: "", lat: 0, lon: 0) {
+    var stop = BusStop(ID: "Loading…", name: "", latitude: 0, longitude: 0) {
         didSet {
             DispatchQueue.main.async {
                 self.label.text = self.stop.name

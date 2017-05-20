@@ -35,21 +35,21 @@ class DirectionViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.route?.name, northsouth.name)
     }
     
-    func testPrimaryDirectionSet_IsNorthOrSouthbound() {
-        //  Route 22 is known to be North-South
-        sut.route = northsouth
-        sleep(1)
-        
-        XCTAssert(sut.primaryDirection == .Northbound || sut.primaryDirection == .Southbound)
-    }
-    
-    func testPrimaryDirectionSet_IsEastOrWestbound() {
-        //  Route 152 is known to be East-West
-        sut.route = eastwest
-        sleep(1)
-        
-        XCTAssert(sut.primaryDirection == .Eastbound || sut.primaryDirection == .Westbound)
-    }
+//    func testPrimaryDirectionSet_IsNorthOrSouthbound() {
+//        //  Route 22 is known to be North-South
+//        sut.route = northsouth
+//        sleep(1)
+//        
+//        XCTAssert(sut.primaryDirection == .Northbound || sut.primaryDirection == .Southbound)
+//    }
+//    
+//    func testPrimaryDirectionSet_IsEastOrWestbound() {
+//        //  Route 152 is known to be East-West
+//        sut.route = eastwest
+//        sleep(1)
+//        
+//        XCTAssert(sut.primaryDirection == .Eastbound || sut.primaryDirection == .Westbound)
+//    }
     
     func testSeque_RouteAndDirectionPassedToStopTableViewController() {
         let direction = Direction.Northbound

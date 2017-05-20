@@ -8,6 +8,7 @@
 
 import SwiftyJSON
 import Dispatch
+import MapKit
 
 class StopManager {
     static let instance = StopManager()
@@ -51,7 +52,7 @@ class StopManager {
                         return
                     }
                     
-                    var stops = [BusStop]()
+                    var stopList = [BusStop]()
                     
                     for stp in stps {
                         guard let ID = stp["stpid"].string else { break }
@@ -59,10 +60,12 @@ class StopManager {
                         let lat = stp["lat"].doubleValue
                         let lon = stp["lon"].doubleValue
                         
-                        stops.append(BusStop(ID: ID, name: name, lat: lat, lon: lon))
+                        let stopItem = BusStop(ID: ID, name: name, latitude: lat, longitude: lon)
+                        stopList.append(stopItem)
+                        self.stops.insert(stopItem)
                     }
                     
-                    self.routeStops[route]?[direction] = stops
+                    self.routeStops[route]?[direction] = stopList
                 }
             }
         }
@@ -93,5 +96,9 @@ class StopManager {
             item.queue.async(execute: item.task)
             return true
         } else { return false }
+    }
+    
+    func getStops(near location: CLLocation, within distance: CLLocationDistance) -> [BusStop] {
+        return stops.filter { location.distance(from: $0.location) <= distance }
     }
 }

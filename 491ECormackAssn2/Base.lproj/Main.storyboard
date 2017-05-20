@@ -124,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="1317.5999999999999" y="92.203898050974516"/>
         </scene>
-        <!--View Controller-->
+        <!--Local View Controller-->
         <scene sceneID="2VI-fj-Q2p">
             <objects>
-                <viewController id="CHD-F6-5dm" sceneMemberID="viewController">
+                <viewController id="CHD-F6-5dm" customClass="LocalViewController" customModule="_91ECormackAssn2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2xK-XH-kH5"/>
                         <viewControllerLayoutGuide type="bottom" id="ILR-aB-Crs"/>
@@ -136,20 +136,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="37g-qg-qsM">
-                                <rect key="frame" x="0.0" y="64" width="375" height="175"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37g-qg-qsM">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="175" id="Cth-mn-fwE"/>
+                                    <constraint firstAttribute="height" constant="200" id="Cth-mn-fwE"/>
                                 </constraints>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tP7-ln-2pY">
+                                <rect key="frame" x="150" y="284" width="74" height="30"/>
+                                <state key="normal" title="Print stops"/>
+                                <connections>
+                                    <action selector="printStops:" destination="CHD-F6-5dm" eventType="touchUpInside" id="SrW-B1-ru3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tP7-ln-2pY" firstAttribute="top" secondItem="37g-qg-qsM" secondAttribute="bottom" constant="20" id="C8F-XW-nMr"/>
+                            <constraint firstItem="tP7-ln-2pY" firstAttribute="centerX" secondItem="ksw-Kv-pfH" secondAttribute="centerX" id="Kfw-es-b2n"/>
                             <constraint firstItem="37g-qg-qsM" firstAttribute="leading" secondItem="ksw-Kv-pfH" secondAttribute="leading" id="adF-JW-Jqj"/>
                             <constraint firstAttribute="trailing" secondItem="37g-qg-qsM" secondAttribute="trailing" id="o4e-5v-UI0"/>
                             <constraint firstItem="37g-qg-qsM" firstAttribute="top" secondItem="2xK-XH-kH5" secondAttribute="bottom" id="ukv-HH-L9P"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="37g-qg-qsM" id="j66-9w-Np1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q40-Sm-lxY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

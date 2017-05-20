@@ -30,6 +30,8 @@
 		A0EBA39E1EB18A90000D9D6A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBA39D1EB18A90000D9D6A /* UIColor.swift */; };
 		A0EBA3A01EB18B8F000D9D6A /* UIColorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBA39F1EB18B8F000D9D6A /* UIColorTest.swift */; };
 		A0EBA3A51EB1A043000D9D6A /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBA3A41EB1A043000D9D6A /* RouteTableViewCell.swift */; };
+		A0EBCF7C1ECFBA7F00A1C1E5 /* LocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBCF7B1ECFBA7F00A1C1E5 /* LocalViewController.swift */; };
+		A0EBCF801ECFBF2F00A1C1E5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EBCF7F1ECFBF2F00A1C1E5 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A0F2FCD61EAE76BE002F74F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FCD51EAE76BE002F74F3 /* AppDelegate.swift */; };
 		A0F2FCD81EAE76BE002F74F3 /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FCD71EAE76BE002F74F3 /* RouteTableViewController.swift */; };
 		A0F2FCDB1EAE76BE002F74F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F2FCD91EAE76BE002F74F3 /* Main.storyboard */; };
@@ -78,6 +80,9 @@
 		A0EBA39D1EB18A90000D9D6A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A0EBA39F1EB18B8F000D9D6A /* UIColorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTest.swift; sourceTree = "<group>"; };
 		A0EBA3A41EB1A043000D9D6A /* RouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
+		A0EBCF7B1ECFBA7F00A1C1E5 /* LocalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalViewController.swift; sourceTree = "<group>"; };
+		A0EBCF7F1ECFBF2F00A1C1E5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A0EBCF811ECFC87B00A1C1E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A0F2FCD21EAE76BE002F74F3 /* 491ECormackAssn2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 491ECormackAssn2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F2FCD51EAE76BE002F74F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F2FCD71EAE76BE002F74F3 /* RouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0EBCF801ECFBF2F00A1C1E5 /* MapKit.framework in Frameworks */,
 				6B44B8EA591419E23269DB69 /* Pods_491ECormackAssn2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +125,8 @@
 		69598AA9376A5DCFC167A883 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0EBCF811ECFC87B00A1C1E5 /* CoreLocation.framework */,
+				A0EBCF7F1ECFBF2F00A1C1E5 /* MapKit.framework */,
 				4DE3E8C3C99FCA04FE21FFC9 /* Pods_491ECormackAssn2.framework */,
 				2B9AD0E09BECFA14608A2C3B /* Pods_491ECormackAssn2Tests.framework */,
 			);
@@ -174,6 +182,7 @@
 				A0B74F591EB2866B00116D7F /* DirectionViewController.swift */,
 				A06630B91EB256AE000F66E6 /* StopTableViewController.swift */,
 				A0F664AB1EB529DF007BC4D1 /* TimeViewController.swift */,
+				A0EBCF7B1ECFBA7F00A1C1E5 /* LocalViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -349,6 +358,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = MQ79U7S5FQ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A0F2FCE51EAE76BE002F74F3 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -505,6 +519,7 @@
 				A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */,
 				A004501A1EB3890D000DD0ED /* StopTableViewCell.swift in Sources */,
 				A0F664AE1EB52BDE007BC4D1 /* Warning.swift in Sources */,
+				A0EBCF7C1ECFBA7F00A1C1E5 /* LocalViewController.swift in Sources */,
 				A0B74F5A1EB2866B00116D7F /* DirectionViewController.swift in Sources */,
 				A0F664B01EB52D61007BC4D1 /* WaitTableViewCell.swift in Sources */,
 				A06630BC1EB256F3000F66E6 /* BusStop.swift in Sources */,
