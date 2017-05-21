@@ -19,6 +19,7 @@
 		A07A846A1EAED38A00B7B053 /* CTAConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A84691EAED38A00B7B053 /* CTAConnector.swift */; };
 		A093AB271ED08E8000DF72A0 /* RouteDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A093AB261ED08E8000DF72A0 /* RouteDirection.swift */; };
 		A093AB291ED1271800DF72A0 /* LocalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A093AB281ED1271800DF72A0 /* LocalTableViewCell.swift */; };
+		A093AB2B1ED1554C00DF72A0 /* testroute.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A093AB2A1ED1554C00DF72A0 /* testroute.gpx */; };
 		A09E0F501EB2DDE9000B300B /* DirectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */; };
 		A0B74F5A1EB2866B00116D7F /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F591EB2866B00116D7F /* DirectionViewController.swift */; };
 		A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F5B1EB286CB00116D7F /* Direction.swift */; };
@@ -71,6 +72,7 @@
 		A07A84691EAED38A00B7B053 /* CTAConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTAConnector.swift; sourceTree = "<group>"; };
 		A093AB261ED08E8000DF72A0 /* RouteDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDirection.swift; sourceTree = "<group>"; };
 		A093AB281ED1271800DF72A0 /* LocalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTableViewCell.swift; sourceTree = "<group>"; };
+		A093AB2A1ED1554C00DF72A0 /* testroute.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testroute.gpx; sourceTree = "<group>"; };
 		A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewControllerTest.swift; sourceTree = "<group>"; };
 		A0B74F591EB2866B00116D7F /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		A0B74F5B1EB286CB00116D7F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		A0F2FCD41EAE76BE002F74F3 /* 491ECormackAssn2 */ = {
 			isa = PBXGroup;
 			children = (
+				A093AB2A1ED1554C00DF72A0 /* testroute.gpx */,
 				A0EBA3991EB1890B000D9D6A /* Utilities */,
 				A0F2FCF51EAE77A2002F74F3 /* Model */,
 				A0EBA3A11EB19DD5000D9D6A /* View */,
@@ -401,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A093AB2B1ED1554C00DF72A0 /* testroute.gpx in Resources */,
 				A0CBF4571EAEB30E00CECA23 /* keys.plist in Resources */,
 				A0F2FCE01EAE76BE002F74F3 /* LaunchScreen.storyboard in Resources */,
 				A0F2FCDD1EAE76BE002F74F3 /* Assets.xcassets in Resources */,

@@ -28,14 +28,15 @@ class LocalViewController: UIViewController, CLLocationManagerDelegate, UITableV
     
     var localStops = [BusStop]()
     var closestStopsWithRoutes = [BusStop: [RouteDirection]]()
-    var stopPredictions = [BusStop: [Prediction]]()
     var routePredictions = [(rtDir: RouteDirection, pred: Prediction)]() {
         didSet {
-            for (rtDir, pred) in routePredictions {
-                print("\(rtDir.route.number), \(rtDir.direction) -> \(pred.stopName): \(pred.waittime) min")
+            if !routePredictions.isEmpty {
+                for (rtDir, pred) in routePredictions {
+                    print("\(rtDir.route.number), \(rtDir.direction) -> \(pred.stopName): \(pred.waittime) min")
+                }
+                DispatchQueue.main.async { self.table.reloadData() }
+                //locationManager.requestLocation()
             }
-            DispatchQueue.main.async { self.table.reloadData() }
-            locationManager.requestLocation()
         }
     }
     
@@ -65,15 +66,17 @@ class LocalViewController: UIViewController, CLLocationManagerDelegate, UITableV
         //  Location manager
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        
-        map.setRegion(MKCoordinateRegionMakeWithDistance((locationManager.location?.coordinate)!, 2 * radius, 2 * radius), animated: true)
+        locationManager.startUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        locationManager.startUpdatingLocation()
         if initialZoom {
+            update()
+            map.setRegion(MKCoordinateRegionMakeWithDistance(here.coordinate, 2 * radius, 2 * radius), animated: true)
             updateTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
+                print("Updating…")
                 self.update()
             }
         }
@@ -81,6 +84,7 @@ class LocalViewController: UIViewController, CLLocationManagerDelegate, UITableV
     
     override func viewWillDisappear(_ animated: Bool) {
         updateTimer?.invalidate()
+        locationManager.stopUpdatingLocation()
         super.viewWillDisappear(animated)
     }
 
@@ -92,13 +96,14 @@ class LocalViewController: UIViewController, CLLocationManagerDelegate, UITableV
     // MARK: - Location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         here = locations.last ?? here
-        if let anno = annotation {
-            map.showAnnotations([anno, map.userLocation], animated: true)
-        }
+        let annotations: [MKAnnotation] = annotation == nil ? [map.userLocation] : [annotation!, map.userLocation]
+        map.showAnnotations(annotations, animated: true)
         if !initialZoom {
             initialZoom = true
+            map.setRegion(MKCoordinateRegionMakeWithDistance(here.coordinate, 2 * radius, 2 * radius), animated: true)
             update()
             updateTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
+                print("Updating…")
                 self.update()
             }
         }
@@ -162,11 +167,14 @@ class LocalViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 guard let prds = json["bustime-response"]["prd"].array else {
                     if let errs = json["bustime-response"]["error"].array {
                         for err in errs { if err["msg"] == "No service scheduled" {
+                            routesToGo -= 1
+                            self.remainingForUpdate -= 1
                             return
                             }
                         }
                     }
                     
+                    routesToGo -= 1
                     self.remainingForUpdate -= 1
                     return
                 }
@@ -201,22 +209,34 @@ class LocalViewController: UIViewController, CLLocationManagerDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routePredictions.count
+        return max(routePredictions.count, 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocalStopCell") as! LocalTableViewCell
-        let (rtDir, pred) = routePredictions[indexPath.row]
-        
-        cell.number.text = pred.routeNum
-        cell.routeName.text = rtDir.route.name
-        cell.stopName.text = pred.stopName
-        cell.directionLabel.text = rtDir.direction.rawValue
-        cell.wait.text = String(pred.waittime)
-        
-        cell.route = rtDir.route
-        cell.direction = rtDir.direction
-        cell.prediction = pred
+        if routePredictions.count == 0 {
+            cell.accessoryType = .none
+            
+            cell.number.text = ""
+            cell.routeName.text = ""
+            cell.stopName.text = "No nearby busses"
+            cell.directionLabel.text = ""
+            cell.wait.text = "∞"
+        } else {
+            let (rtDir, pred) = routePredictions[indexPath.row]
+            
+            cell.accessoryType = .detailButton
+            
+            cell.number.text = pred.routeNum
+            cell.routeName.text = rtDir.route.name
+            cell.stopName.text = pred.stopName
+            cell.directionLabel.text = rtDir.direction.rawValue
+            cell.wait.text = String(pred.waittime)
+            
+            cell.route = rtDir.route
+            cell.direction = rtDir.direction
+            cell.prediction = pred
+        }
         
         return cell
     }
@@ -232,7 +252,8 @@ class LocalViewController: UIViewController, CLLocationManagerDelegate, UITableV
         annotation?.coordinate = stop.location.coordinate
         
         map.addAnnotation(annotation!)
-        locationManager.requestLocation()
+        map.showAnnotations([annotation!, map.userLocation], animated: true)
+        //locationManager.requestLocation()
     }
 
     // MARK: - Navigation
