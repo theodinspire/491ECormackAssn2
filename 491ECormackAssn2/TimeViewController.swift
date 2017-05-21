@@ -174,8 +174,9 @@ class TimeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 guard let key = prd["typ"].string, let predictionType = PredictionType(forKey: key) else { break }
                 guard let dir = prd["rtdir"].string, let direction = Direction(rawValue: dir) else { break }
                 guard let time = prd["prdctdn"].string, let waittime = Int(time) else { break }
+                guard let stpnm = prd["stpnm"].string else { break }
                 
-                self.predictions.append(Prediction(destination: destination, routeNum: routeNum, type: predictionType, direction: direction, waittime: waittime))
+                self.predictions.append(Prediction(destination: destination, routeNum: routeNum, type: predictionType, direction: direction, waittime: waittime, stopName: stpnm))
             }
             
             self.predictions.sort { $0.waittime < $1.waittime }

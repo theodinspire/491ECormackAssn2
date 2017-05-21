@@ -125,7 +125,7 @@ class StopTableViewController: UITableViewController {
         let stopManager = StopManager.instance
         
         stopManager.performTaskWhenLoaded(for: route!, going: direction!, on: DispatchQueue.global(qos: .userInitiated)) {
-            self.stops = (stopManager.routeStops[self.route!]?[self.direction!])!
+            self.stops = (stopManager.routeToStops[self.route!]?[self.direction!])!
         }
     }
 }

@@ -21,7 +21,7 @@ class DirectionViewController: UIViewController {
             let stopManager = StopManager.instance
             
             stopManager.performTaskWhenLoaded(for: rt, going: nil, on: DispatchQueue.main) {
-                guard let keys = stopManager.routeStops[rt]?.keys else { return }
+                guard let keys = stopManager.routeToStops[rt]?.keys else { return }
                 
                 for key in keys {
                     switch key {

@@ -13,8 +13,8 @@ import MapKit
 class StopManager {
     static let instance = StopManager()
     
-    var stops: Set<BusStop> = []
-    var routeStops = [Route: [Direction: [BusStop]]]() {
+    var stopsToRoutes: [BusStop: [RouteDirection]] = [:]
+    var routeToStops = [Route: [Direction: [BusStop]]]() {
         didSet { performAllTasks() }
     }
     
@@ -23,8 +23,8 @@ class StopManager {
     private init() { }
     
     func add(route: Route) {
-        if routeStops[route] == nil {
-            routeStops[route] = [Direction: [BusStop]]()
+        if routeToStops[route] == nil {
+            routeToStops[route] = [Direction: [BusStop]]()
         }
         
         CTAConnector.makeRequest(forCall: "getdirections", withArguments: ["rt=\(route.number)"]) { data in
@@ -62,10 +62,13 @@ class StopManager {
                         
                         let stopItem = BusStop(ID: ID, name: name, latitude: lat, longitude: lon)
                         stopList.append(stopItem)
-                        self.stops.insert(stopItem)
+                        
+                        var tmp = self.stopsToRoutes[stopItem] ?? []
+                        tmp.append(RouteDirection(route: route, direction: direction))
+                        self.stopsToRoutes[stopItem] = tmp
                     }
                     
-                    self.routeStops[route]?[direction] = stopList
+                    self.routeToStops[route]?[direction] = stopList
                 }
             }
         }
@@ -89,16 +92,22 @@ class StopManager {
     }
     
     private func performTask(of item: (route: Route, heading: Direction?, task: () -> Void, queue: DispatchQueue)) -> Bool {
-        if let heading = item.heading, let _ = routeStops[item.route]?[heading] {
+        if let heading = item.heading, let _ = routeToStops[item.route]?[heading] {
             item.queue.async(execute: item.task)
             return true
-        } else if item.heading == nil, let _ = routeStops[item.route]?.first {
+        } else if item.heading == nil, let _ = routeToStops[item.route]?.first {
             item.queue.async(execute: item.task)
             return true
         } else { return false }
     }
     
     func getStops(near location: CLLocation, within distance: CLLocationDistance) -> [BusStop] {
-        return stops.filter { location.distance(from: $0.location) <= distance }
+        return stopsToRoutes.keys.filter { location.distance(from: $0.location) <= distance }
+    }
+    
+    func getRoutesAndDirections(for stops: [BusStop]) -> Set<RouteDirection> {
+        var set = Set<RouteDirection>()
+        stops.forEach { if let routes = stopsToRoutes[$0] { set.formUnion(routes) } }
+        return set
     }
 }

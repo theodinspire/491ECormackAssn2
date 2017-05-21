@@ -14,6 +14,7 @@ struct Prediction {
     let type: PredictionType?
     let direction: Direction
     let waittime: Int
+    let stopName: String
 }
 
 enum PredictionType: String {

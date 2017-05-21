@@ -36,12 +36,9 @@ class RouteManager {
             for rt in rts {
                 let colorCode = rt["rtclr"].string // Can be option
                 if let number = rt["rt"].string, let name = rt["rtnm"].string { // Must have value
-                    if ["22", "50", "78", "79"].contains(number) {
-                        //  TODO: Remove this conditional
-                        let route = Route(name: name, number: number, colorCode: colorCode)
-                        self.routes.append(route)
-                        StopManager.instance.add(route: route)
-                    }
+                    let route = Route(name: name, number: number, colorCode: colorCode)
+                    self.routes.append(route)
+                    StopManager.instance.add(route: route)
                 }
             }
             

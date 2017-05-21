@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Route: Equatable, Hashable {
+class Route: Hashable {
     let name: String
     let number: String
     lazy var color: UIColor = UIColor.lightGray
@@ -25,6 +25,6 @@ class Route: Equatable, Hashable {
     }
     
     var hashValue: Int {
-        return name.hashValue
+        return number.hashValue
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class BusStop: Equatable, Hashable {
+class BusStop: Hashable {
     let ID: String
     let name: String
     

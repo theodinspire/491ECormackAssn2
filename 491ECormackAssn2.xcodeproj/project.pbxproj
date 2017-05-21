@@ -17,6 +17,8 @@
 		A06630BA1EB256AE000F66E6 /* StopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06630B91EB256AE000F66E6 /* StopTableViewController.swift */; };
 		A06630BC1EB256F3000F66E6 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06630BB1EB256F3000F66E6 /* BusStop.swift */; };
 		A07A846A1EAED38A00B7B053 /* CTAConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A84691EAED38A00B7B053 /* CTAConnector.swift */; };
+		A093AB271ED08E8000DF72A0 /* RouteDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A093AB261ED08E8000DF72A0 /* RouteDirection.swift */; };
+		A093AB291ED1271800DF72A0 /* LocalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A093AB281ED1271800DF72A0 /* LocalTableViewCell.swift */; };
 		A09E0F501EB2DDE9000B300B /* DirectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */; };
 		A0B74F5A1EB2866B00116D7F /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F591EB2866B00116D7F /* DirectionViewController.swift */; };
 		A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B74F5B1EB286CB00116D7F /* Direction.swift */; };
@@ -67,6 +69,8 @@
 		A06630B91EB256AE000F66E6 /* StopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopTableViewController.swift; sourceTree = "<group>"; };
 		A06630BB1EB256F3000F66E6 /* BusStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		A07A84691EAED38A00B7B053 /* CTAConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTAConnector.swift; sourceTree = "<group>"; };
+		A093AB261ED08E8000DF72A0 /* RouteDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDirection.swift; sourceTree = "<group>"; };
+		A093AB281ED1271800DF72A0 /* LocalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTableViewCell.swift; sourceTree = "<group>"; };
 		A09E0F4F1EB2DDE9000B300B /* DirectionViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewControllerTest.swift; sourceTree = "<group>"; };
 		A0B74F591EB2866B00116D7F /* DirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		A0B74F5B1EB286CB00116D7F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A0EBA39D1EB18A90000D9D6A /* UIColor.swift */,
+				A093AB261ED08E8000DF72A0 /* RouteDirection.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				A00450191EB3890D000DD0ED /* StopTableViewCell.swift */,
 				A0F664AF1EB52D61007BC4D1 /* WaitTableViewCell.swift */,
 				A0F664B51EB555A7007BC4D1 /* WarningTableViewCell.swift */,
+				A093AB281ED1271800DF72A0 /* LocalTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				A0EBA39E1EB18A90000D9D6A /* UIColor.swift in Sources */,
 				A0F2FCD81EAE76BE002F74F3 /* RouteTableViewController.swift in Sources */,
 				A0F2FCD61EAE76BE002F74F3 /* AppDelegate.swift in Sources */,
+				A093AB291ED1271800DF72A0 /* LocalTableViewCell.swift in Sources */,
 				A0EBA3A51EB1A043000D9D6A /* RouteTableViewCell.swift in Sources */,
 				A06630BA1EB256AE000F66E6 /* StopTableViewController.swift in Sources */,
 				A0B74F5C1EB286CB00116D7F /* Direction.swift in Sources */,
@@ -528,6 +535,7 @@
 				A0F664AC1EB529DF007BC4D1 /* TimeViewController.swift in Sources */,
 				A0C8604C1ECE657C00BF7C5F /* RouteManager.swift in Sources */,
 				A0EBA3981EB12379000D9D6A /* Route.swift in Sources */,
+				A093AB271ED08E8000DF72A0 /* RouteDirection.swift in Sources */,
 				A0CBF45A1EAEB43800CECA23 /* KeyRing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
